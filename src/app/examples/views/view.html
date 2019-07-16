@@ -1,8 +1,33 @@
 <h2 class="example-title">{{title}}</h2>
 <div class="col-md-8 mr-auto ml-auto dropdown-container">
-    <angular2-multiselect [data]="itemList" [selectAllInputValue]="selectAllValue" [(ngModel)]="selectedItems" [settings]="settings" (onSelect)="onItemSelect($event)"
-        (onDeSelect)="OnItemDeSelect($event)" (onSelectAllValue)="getSelectAllValue($event)" (onSelectAll)="onSelectAll($event)" (onDeSelectAll)="onDeSelectAll($event)">
-        </angular2-multiselect>
+    <angular2-multiselect [data]="dropdownList"
+    (onSelect)="onItemSelect($event)" 
+    (onDeSelect)="OnItemDeSelect($event)"
+    (onSelectAll)="onSelectAll($event)"
+    (onDeSelectAll)="onDeSelectAll($event)"
+    (clickOutside)="onClickOutideDropdown($event)"
+    [selectAllInputValue]="selectAllValue"
+    (onSelectAllValue)="getSelectAllValue($event)"
+
+     [(ngModel)]="selectedItems" [settings]="dropdownSettings">
+    
+      <input type="text">
+        <c-item>
+              <ng-template let-item="item">
+                <label style="color: #333;min-width: 150px;">{{item.itemName}}</label>
+                <span *ngIf="item.isSelected == true" >
+                <input type="text" value="{{item.reqN}}" (click)="$event.stopPropagation()" (focus)="getFocus($event);"
+                 #value (blur)="getFocusOut(item, value.value)"  >
+                 
+                <!-- <img [src]="item.image" style="width: 30px; border: 1px solid #efefef;margin-right: 20px;" /> -->
+                <!-- <label>Capital - {{item.capital}}</label> -->
+
+              </span>
+              </ng-template>
+              
+      </c-item>    
+      
+    </angular2-multiselect>
 </div>
 <h4 class="example-title code-section">Code</h4>
 
