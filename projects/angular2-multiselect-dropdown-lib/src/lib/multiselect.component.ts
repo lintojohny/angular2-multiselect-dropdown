@@ -41,6 +41,9 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
     settings: DropdownSettings;
 
     @Input()
+    selectAllInputValue: any;
+
+    @Input()
     loading: boolean;
 
     @Output('onSelect')
@@ -51,6 +54,9 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
 
     @Output('onSelectAll')
     onSelectAll: EventEmitter<Array<any>> = new EventEmitter<Array<any>>();
+
+    @Output('onSelectAllValue')
+    onSelectAllValue: EventEmitter<Array<any>> = new EventEmitter<Array<any>>();
 
     @Output('onDeSelectAll')
     onDeSelectAll: EventEmitter<Array<any>> = new EventEmitter<Array<any>>();
@@ -87,6 +93,7 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
     @ViewChild('searchInput', {static: true}) searchInput: ElementRef;
     @ViewChild('selectedList', {static: true}) selectedListElem: ElementRef;
     @ViewChild('dropdownList', {static: true}) dropdownListElem: ElementRef;
+    selectAllValue : any;
 
     @HostListener('document:keyup.escape', ['$event'])
     onEscapeDown(event: KeyboardEvent) {
@@ -187,6 +194,12 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
 
     }
     ngOnChanges(changes: SimpleChanges) {
+
+
+        if(changes.selectAllInputValue){
+            this.selectAllValue = changes.selectAllInputValue.currentValue
+        }
+
         if (changes.data && !changes.data.firstChange) {
             if (this.settings.groupBy) {
                 this.groupedData = this.transformData(this.data, this.settings.groupBy);
@@ -376,6 +389,9 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
         this.onOpen.emit(true);
     }
     public closeDropdown() {
+        
+        this.onSelectAllValue.emit(this.selectAllValue);
+        
         if (this.searchInput && this.settings.lazyLoading) {
             this.searchInput.nativeElement.value = "";
         }
@@ -387,6 +403,8 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
         this.onClose.emit(false);
     }
     public closeDropdownOnClickOut() {
+        
+        this.onSelectAllValue.emit(this.selectAllValue);
         if(this.isActive){
             if (this.searchInput && this.settings.lazyLoading) {
                 this.searchInput.nativeElement.value = "";
@@ -414,8 +432,9 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
             this.isSelectAll = true;
             this.onChangeCallback(this.selectedItems);
             this.onTouchedCallback(this.selectedItems);
-
+            
             this.onSelectAll.emit(this.selectedItems);
+            this.onSelectAllValue.emit(this.selectAllValue);
         }
         else {
             if (this.settings.groupBy) {
@@ -430,7 +449,7 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
             this.isSelectAll = false;
             this.onChangeCallback(this.selectedItems);
             this.onTouchedCallback(this.selectedItems);
-
+            this.onSelectAllValue.emit(this.selectAllValue);
             this.onDeSelectAll.emit(this.selectedItems);
         }
     }
@@ -450,7 +469,6 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
             }
             )
         });
-        console.log(this.groupedData);
     }
     toggleFilterSelectAll() {
         if (!this.isFilterSelectAll) {

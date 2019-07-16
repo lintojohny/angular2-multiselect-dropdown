@@ -56,6 +56,10 @@
                 <span [hidden]="isSelectAll">{{settings.selectAllText}}</span>
                 <span [hidden]="!isSelectAll">{{settings.unSelectAllText}}</span>
             </label>
+            <span class="shc-selectAll" [hidden]="!isSelectAll">
+                <input type="number" onKeyPress="if(this.value.length==6) return false;"  [(ngModel)]="selectAllValue" (click)="$event.stopPropagation()" >
+            </span>
+
             <img class="loading-icon" *ngIf="loading" src="assets/img/loading.gif"/>
         </div>
         <div class="list-filter" *ngIf="settings.enableSearchFilter">

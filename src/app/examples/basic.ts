@@ -8,7 +8,7 @@ export class BasicExample implements OnInit {
     itemList = [];
     selectedItems = [];
     settings = {};
-
+    selectAllValue = 10000;
     constructor() { }
     ngOnInit() {
 
@@ -50,6 +50,10 @@ export class BasicExample implements OnInit {
     }
     onDeSelectAll(items: any) {
         console.log(items);
+    }
+    getSelectAllValue($event){
+        console.log('event', $event);
+        
     }
     cssgist: boolean = false;
     title: string = "Basic example";

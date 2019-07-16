@@ -1,16 +1,17 @@
 {
-  "name": "angular2-multiselect-dropdown",
-  "version": "4.2.7",
-  "description": "Angular 2 and angular 4 and angular 6 multiselect dropdown component.",
+  "name": "angular2-multiselect-dropdow-select-all",
+  "version": "1.0.1",
+  "description": "Angular 2 and angular 4 and angular 6 and 7 multiselect dropdown component with input box.",
   "keywords": [
     "angular 2 multiselect dropdown",
     "angular 4 multiselect dropdown",
     "angular multiselect",
     "angular dropdown",
-    "angular 6 dropdown multiselect"
+    "angular 6 dropdown multiselect",
+    "angular 7 dropdown multiselect with input box"
   ],
   "license": "MIT",
-  "author": "Pradeep Terli",
+  "author": "Linto Johny",
   "scripts": {
   },
   "dependencies": {
