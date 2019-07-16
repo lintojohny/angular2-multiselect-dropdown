@@ -66,9 +66,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/CuppaLabs/angular2-multiselect-dropdown"
+    "url": "https://github.com/lintojohny/angular2-multiselect-dropdown"
   },
   "bugs": {
-    "url": "https://github.com/CuppaLabs/angular2-multiselect-dropdown/issues"
+    "url": "https://github.com/lintojohny/angular2-multiselect-dropdown"
   }
 }
