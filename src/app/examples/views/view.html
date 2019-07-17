@@ -14,7 +14,7 @@
       <input type="text">
         <c-item>
               <ng-template let-item="item">
-                <label style="color: #333;min-width: 150px;">{{item.itemName}}</label>
+                <label style="color: #333;min-width: 150px;">{{item.name}}</label>
                 <span *ngIf="item.isSelected == true" >
                 <input type="text" value="{{item.reqN}}" (click)="$event.stopPropagation()" (focus)="getFocus($event);"
                  #value (blur)="getFocusOut(item, value.value)"  >
