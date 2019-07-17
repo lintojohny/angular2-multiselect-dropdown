@@ -56,7 +56,7 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
     onSelectAll: EventEmitter<Array<any>> = new EventEmitter<Array<any>>();
 
     @Output('onSelectAllValue')
-    onSelectAllValue: EventEmitter<Array<any>> = new EventEmitter<Array<any>>();
+    onSelectAllValue: EventEmitter<any> = new EventEmitter<Array<any>>();
 
     @Output('onDeSelectAll')
     onDeSelectAll: EventEmitter<Array<any>> = new EventEmitter<Array<any>>();
@@ -390,8 +390,11 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
     }
     public closeDropdown() {
         
-        this.onSelectAllValue.emit(this.selectAllValue);
-        
+        const dataPass = {
+            selectValue : this.selectAllValue,
+            isSelectAll : this.isSelectAll
+        }
+    this.onSelectAllValue.emit(dataPass);        
         if (this.searchInput && this.settings.lazyLoading) {
             this.searchInput.nativeElement.value = "";
         }
@@ -403,8 +406,11 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
         this.onClose.emit(false);
     }
     public closeDropdownOnClickOut() {
-        
-        this.onSelectAllValue.emit(this.selectAllValue);
+            const dataPass = {
+                selectValue : this.selectAllValue,
+                isSelectAll : this.isSelectAll
+            }
+        this.onSelectAllValue.emit(dataPass);
         if(this.isActive){
             if (this.searchInput && this.settings.lazyLoading) {
                 this.searchInput.nativeElement.value = "";
@@ -434,8 +440,11 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
             this.onTouchedCallback(this.selectedItems);
             
             this.onSelectAll.emit(this.selectedItems);
-            this.onSelectAllValue.emit(this.selectAllValue);
-        }
+            const dataPass = {
+                selectValue : this.selectAllValue,
+                isSelectAll : this.isSelectAll
+            }
+        this.onSelectAllValue.emit(dataPass);        }
         else {
             if (this.settings.groupBy) {
                 this.groupedData.forEach((obj) => {
@@ -449,7 +458,11 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
             this.isSelectAll = false;
             this.onChangeCallback(this.selectedItems);
             this.onTouchedCallback(this.selectedItems);
-            this.onSelectAllValue.emit(this.selectAllValue);
+            const dataPass = {
+                selectValue : this.selectAllValue,
+                isSelectAll : this.isSelectAll
+            }
+        this.onSelectAllValue.emit(dataPass);
             this.onDeSelectAll.emit(this.selectedItems);
         }
     }
