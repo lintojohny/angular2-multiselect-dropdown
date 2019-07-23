@@ -28,7 +28,7 @@ export class BasicExample implements OnInit {
         {"id":10,"name":"Sweden", "reqN": "Sweden", "isSelected": "false" }
       ];
   this.selectedItems = [
-    {"id":1,"itemName":"India", "reqN": "India", "isSelected": "false" },
+    {"id":1,"name":"India", "reqN": "India", "isSelected": "false" },
      
       ];
   this.dropdownSettings = { 
@@ -38,8 +38,8 @@ export class BasicExample implements OnInit {
             unSelectAllText:'UnSelect All',
             enableSearchFilter: true,
             classes:"myclass custom-class",
-            showCheckbox: true
-  
+            showCheckbox: true,
+            limitSelection: 5
           };            
     }
   

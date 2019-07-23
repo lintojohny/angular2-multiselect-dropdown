@@ -3,7 +3,7 @@ import { FormsModule, NG_VALUE_ACCESSOR, ControlValueAccessor, NG_VALIDATORS, Va
 import { CommonModule } from '@angular/common';
 import { MyException } from './multiselect.model';
 import { DropdownSettings } from './multiselect.interface';
-import { ClickOutsideDirective, ScrollDirective, styleDirective, setPosition } from './clickOutside';
+import { ClickOutsideDirective, ScrollDirective, styleDirective, setPosition, OnlyNumber } from './clickOutside';
 import { ListFilterPipe } from './list-filter';
 import { Item, Badge, Search, TemplateRenderer, CIcon } from './menu-item';
 import { DataService } from './multiselect.service';
@@ -142,7 +142,7 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
         enableSearchFilter: false,
         searchBy: [],
         maxHeight: 300,
-        badgeShowLimit: 999999999999,
+        badgeShowLimit: 9999,
         classes: '',
         disabled: false,
         searchPlaceholderText: 'Search',
@@ -150,7 +150,7 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
         noDataLabel: 'No Data Available',
         searchAutofocus: true,
         lazyLoading: false,
-        labelKey: 'itemName',
+        labelKey: 'name',
         primaryKey: 'id',
         position: 'bottom',
         autoPosition: true,
@@ -824,8 +824,8 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
 
 @NgModule({
     imports: [CommonModule, FormsModule],
-    declarations: [AngularMultiSelect, ClickOutsideDirective, ScrollDirective, styleDirective, ListFilterPipe, Item, TemplateRenderer, Badge, Search, setPosition, VirtualScrollComponent, CIcon],
-    exports: [AngularMultiSelect, ClickOutsideDirective, ScrollDirective, styleDirective, ListFilterPipe, Item, TemplateRenderer, Badge, Search, setPosition, VirtualScrollComponent, CIcon],
+    declarations: [AngularMultiSelect, OnlyNumber, ClickOutsideDirective, ScrollDirective, styleDirective, ListFilterPipe, Item, TemplateRenderer, Badge, Search, setPosition, VirtualScrollComponent, CIcon],
+    exports: [AngularMultiSelect, ClickOutsideDirective,OnlyNumber, ScrollDirective, styleDirective, ListFilterPipe, Item, TemplateRenderer, Badge, Search, setPosition, VirtualScrollComponent, CIcon],
     providers: [DataService]
 })
 export class AngularMultiSelectModule { }
