@@ -215,13 +215,18 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
         if (changes.loading) {
             console.log(this.loading);
         }
+
+        
     }
     ngDoCheck() {
         if (this.selectedItems) {
             if (this.selectedItems.length == 0 || this.data.length == 0 || this.selectedItems.length < this.data.length) {
                 this.isSelectAll = false;
+            }else {
+            this.isSelectAll = true;
             }
         }
+       
     }
     ngAfterViewInit() {
         if (this.settings.lazyLoading) {
@@ -355,6 +360,9 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
         this.onTouchedCallback(this.selectedItems);
     }
     toggleDropdown(evt: any) {
+
+        console.log('evt, evt', evt);
+        
         if (this.settings.disabled) {
             return false;
         }

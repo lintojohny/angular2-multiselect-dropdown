@@ -5,7 +5,7 @@
             <span *ngIf="selectedItems?.length == 0">{{settings.text}}</span>
             <span *ngIf="settings.singleSelection && !badgeTempl">
                 <span *ngFor="let item of selectedItems;trackBy: trackByFn.bind(this);">
-                    {{item[settings.labelKey]}}
+                    {{item[settings.labelKey]}} 
                 </span>
             </span>
             

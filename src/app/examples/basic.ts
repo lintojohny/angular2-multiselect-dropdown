@@ -29,6 +29,15 @@ export class BasicExample implements OnInit {
       ];
   this.selectedItems = [
     {"id":1,"name":"India", "reqN": "India", "isSelected": "false" },
+    {"id":2,"name":"Singapore", "reqN": "Singapore", "isSelected": "false" },
+    {"id":3,"name":"Australia", "reqN": "Australia", "isSelected": "false" },
+    {"id":4,"name":"Canada", "reqN": "Canada", "isSelected": "false" },
+    {"id":5,"name":"South Korea", "reqN": "Korea", "isSelected": "false" },
+    {"id":6,"name":"Germany", "reqN": "Germany", "isSelected": "false" },
+    {"id":7,"name":"France", "reqN": "France", "isSelected": "false" },
+    {"id":8,"name":"Russia", "reqN": "Russia", "isSelected": "false" },
+    {"id":9,"name":"Italy", "reqN": "Italy", "isSelected": "false" },
+    {"id":10,"name":"Sweden", "reqN": "Sweden", "isSelected": "false" }
      
       ];
   this.dropdownSettings = { 
