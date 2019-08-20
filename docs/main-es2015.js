@@ -929,7 +929,7 @@ class AngularMultiSelect {
         this.onTouchedCallback(this.selectedItems);
     }
     toggleDropdown(evt) {
-        console.log('evt, evt', evt);
+        this.settings.limitSelection = 5;
         if (this.settings.disabled) {
             return false;
         }

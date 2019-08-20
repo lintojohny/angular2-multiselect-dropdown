@@ -240,6 +240,7 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
         }
     }
     onItemClick(item: any, index: number, evt: Event) {
+        
         if (this.settings.disabled) {
             return false;
         }
@@ -360,6 +361,7 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
         this.onTouchedCallback(this.selectedItems);
     }
     toggleDropdown(evt: any) {
+        this.settings.limitSelection = 5;
         if (this.settings.disabled) {
             return false;
         }
