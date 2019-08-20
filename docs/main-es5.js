@@ -957,7 +957,7 @@ var AngularMultiSelect = /** @class */ (function () {
     };
     AngularMultiSelect.prototype.toggleDropdown = function (evt) {
         var _this = this;
-        if (!this.isSelectAll) {
+        if (!this.isSelectAll && this.selectedItems.length) {
             this.settings.limitSelection = 5;
         }
         if (this.settings.disabled) {
