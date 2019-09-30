@@ -48,7 +48,6 @@ export class BasicExample implements OnInit {
             enableSearchFilter: true,
             classes:"myclass custom-class",
             showCheckbox: true,
-            limitSelection: 5
           };            
     }
   

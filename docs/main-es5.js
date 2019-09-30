@@ -957,8 +957,14 @@ var AngularMultiSelect = /** @class */ (function () {
     };
     AngularMultiSelect.prototype.toggleDropdown = function (evt) {
         var _this = this;
-        if (!this.isSelectAll && this.selectedItems.length) {
+        if (!this.isSelectAll) {
             this.settings.limitSelection = 5;
+        }
+        else if (this.selectedItems.length >= 5) {
+            this.settings.limitSelection = 5;
+        }
+        else {
+            this.settings.limitSelection = 0;
         }
         if (this.settings.disabled) {
             return false;
@@ -3069,7 +3075,6 @@ var BasicExample = /** @class */ (function () {
             enableSearchFilter: true,
             classes: "myclass custom-class",
             showCheckbox: true,
-            limitSelection: 5
         };
     };
     BasicExample.prototype.onItemSelect = function (item) {

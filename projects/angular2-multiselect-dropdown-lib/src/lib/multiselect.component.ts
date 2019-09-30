@@ -361,9 +361,15 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
         this.onTouchedCallback(this.selectedItems);
     }
     toggleDropdown(evt: any) {
-        if(!this.isSelectAll && this.selectedItems.length){
+        
+        if(!this.isSelectAll){
             this.settings.limitSelection = 5;
+        }else if(this.selectedItems.length >= 5){
+            this.settings.limitSelection = 5;
+        }else {
+            this.settings.limitSelection = 0;
         }
+
         if (this.settings.disabled) {
             return false;
         }
