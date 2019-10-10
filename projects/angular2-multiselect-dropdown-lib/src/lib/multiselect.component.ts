@@ -195,7 +195,6 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
     }
     ngOnChanges(changes: SimpleChanges) {
 
-
         if(changes.selectAllInputValue){
             this.selectAllValue = changes.selectAllInputValue.currentValue
         }
@@ -213,7 +212,6 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
             this.settings = Object.assign(this.defaultSettings, this.settings);
         }
         if (changes.loading) {
-            console.log(this.loading);
         }
 
         
@@ -295,13 +293,12 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
                     }
                 }
                 catch (e) {
-                    console.error(e.body.msg);
                 }
 
             }
             else {
                 if (this.settings.limitSelection) {
-                    this.selectedItems = value.slice(0, this.settings.limitSelection);
+                    // this.selectedItems = value.slice(0, this.settings.limitSelection);
                 }
                 else {
                     this.selectedItems = value;
@@ -362,13 +359,13 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
     }
     toggleDropdown(evt: any) {
         
-        if(!this.isSelectAll){
-            this.settings.limitSelection = 5;
-        }else if(this.selectedItems.length >= 5){
-            this.settings.limitSelection = 5;
-        }else {
-            this.settings.limitSelection = 0;
-        }
+        // if(!this.isSelectAll){
+        //     this.settings.limitSelection = 5;
+        // }else if(this.selectedItems.length >= 5){
+        //     this.settings.limitSelection = 5;
+        // }else {
+        //     this.settings.limitSelection = 0;
+        // }
 
         if (this.settings.disabled) {
             return false;
@@ -380,9 +377,11 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
                     this.searchInput.nativeElement.focus();
                 }, 0);
             }
+
             this.onOpen.emit(true);
         }
         else {
+            
             this.onClose.emit(false);
         }
         setTimeout(() => {
@@ -421,6 +420,7 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
         this.onClose.emit(false);
     }
     public closeDropdownOnClickOut() {
+        
             const dataPass = {
                 selectValue : this.selectAllValue,
                 isSelectAll : this.isSelectAll
@@ -439,6 +439,7 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
         }
     }
     toggleSelectAll() {
+        
         if (!this.isSelectAll) {
             this.selectedItems = [];
             if (this.settings.groupBy) {
